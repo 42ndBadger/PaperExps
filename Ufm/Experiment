@@ -1,0 +1,139 @@
+#!/bin/bash
+
+# This is a template for an experiment configuration file.
+
+#--------------------------------------------------------------------------------
+# 1. Define and configure the algorithms that should be included in the 
+#    experiment.
+#--------------------------------------------------------------------------------
+# The term "algorithm" refers to a filename in the "partitioners/" subdirectory.
+# Each of these files contains instructions to (a) fetch, (b) build and (c) invoke 
+# a specific graph partitioner.
+#
+# New algorithms can be derived by parameterizing these three phases. The semantics 
+# of the parameters depend on the algorithm, but are usually passed to (a) git, 
+# (b) CMake, (c) the partitioner's binary.
+
+# (a) DefineAlgorithmVersion <new name> <based on> <additional argument>
+DefineAlgorithmVersion SparsificationBranch KaMinPar origin/sparsification
+# ^ Define a new algorithm "KaMinPar-DbgBranch", based on "KaMinPar", but uses the
+# my/dbg/branch branch instead of the main branch.
+
+# (b) DefineAlgorithmBuild <new name> <based on> <additional argument>
+# ^ Define a new algorithm "KaMinPar64", based on "KaMinPar-DbgBranch", but passes 
+# an additional argument to the CMake script (use 64 bit edge IDs).
+
+# (c) DefineAlgorithm <new name> <based on> <additional argument>
+
+DefineAlgorithm Standard SparsificationBranch --c-algorithm clustering --max-timer-depth 5 
+DefineAlgorithm c3-Standard SparsificationBranch --c-algorithm clustering --max-timer-depth 5 --c-contraction-limit=160 --c-cluster-weight-multiplier=0.00625 --c-cluster-weight-limit=static-block-weight --c-lp-num-iterations=1 --c-shrink-factor=2.5
+
+DefineAlgorithm T-Weight-d2-r0.5-l2 SparsificationBranch --c-algorithm sparsifying-clustering --c-sparsification threshold --s-score weight  --s-density-factor 2 --s-reduction-factor 0.5 --s-laziness-factor 2 --max-timer-depth 5
+DefineAlgorithm T-WFF-d2-r0.5-l2 SparsificationBranch --c-algorithm sparsifying-clustering --c-sparsification threshold --s-score weight  --s-density-factor 2 --s-reduction-factor 0.5 --s-laziness-factor 2 --max-timer-depth 5
+
+DefineAlgorithm kway-Standard SparsificationBranch --c-algorithm clustering --max-timer-depth 5 -m kway 
+DefineAlgorithm kway-T-Weight-d2-r0.5-l2 SparsificationBranch --c-algorithm sparsifying-clustering --c-sparsification threshold --s-score weight  --s-density-factor 2 --s-reduction-factor 0.5 --s-laziness-factor 2 --max-timer-depth 5 -m kway
+
+DefineAlgorithm sf2.5-Standard SparsificationBranch --c-algorithm clustering --max-timer-depth 5 --c-shrink-factor 2.5
+DefineAlgorithm sf2.5-T-Weight-d2-r0.5-l2 SparsificationBranch --c-algorithm sparsifying-clustering --c-sparsification threshold --s-score weight  --s-density-factor 2 --s-reduction-factor 0.5 --s-laziness-factor 2 --max-timer-depth 5 --c-shrink-factor 2.5
+DefineAlgorithm sf2.5-T-Weight-d1-r0.25-l3 SparsificationBranch --c-algorithm sparsifying-clustering --c-sparsification threshold --s-score weight  --s-density-factor 1 --s-reduction-factor 0.25 --s-laziness-factor 3 --max-timer-depth 5 --c-shrink-factor 2.5
+
+DefineAlgorithm T-Weight-d1-r0.5-l3 SparsificationBranch --c-algorithm sparsifying-clustering --c-sparsification threshold --s-score weight  --s-density-factor 1 --s-reduction-factor 0.5 --s-laziness-factor 3 --max-timer-depth 5
+DefineAlgorithm sf2.5-T-Weight-d1-r0.5-l3 SparsificationBranch --c-algorithm sparsifying-clustering --c-sparsification threshold --s-score weight  --s-density-factor 1 --s-reduction-factor 0.5 --s-laziness-factor 3 --max-timer-depth 5 --c-shrink-factor 2.5
+
+# For a list of all predefined algorithms, take a look at the "partitioners/" 
+# subdirectory. The names of the files correspond to the algorithm names.
+
+#--------------------------------------------------------------------------------
+# 2. Define the environment of the experiment.
+#--------------------------------------------------------------------------------
+# Pick a system for which the jobfiles should be generated (the names correspond to 
+# files in the "systems/" subdirectory):
+System Generic
+# System i10-Exclusive          # i10 compute servers, run experiment via "exclusive"
+# System i10-Nonexclusive       # i10 compute servers, run experiment via "nonexclusive"
+# System i10-Parallel           # i10 compute servers, run multiple *sequential* jobs in parallel 
+# System i10                    # i10 compute servers, run without exclusive / nonexclusive etc.
+# System HoreKa-TBB             # HoreKa with MPI only / MPI+TBB
+# System HoreKa-OMP             # HoreKa with MPI only / MPI+OpenMP
+# System SuperMUC               # SuperMUC with MPI only / MPI+TBB
+# System SuperMUC-SlotScheduler # SuperMUC for shared-memory or sequential jobs, that are executed in parallel on multiple jobs by a job scheduler
+
+# For SuperMUC, provide additional information:
+# Username <username>   # your SSH username for SuperMUC file transfer
+# Project <project>     # your SuperMUC project
+
+# Load additional libraries (the names correspond to files in the "libs/" subdirectory):
+# UseLibrary Sparsehash 
+
+# Select a "call wrapper" that is used to start the partitioners:
+Wrapper taskset   # run with taskset to limit CPU affinity
+# Wrapper IMPI    # run with Intel MPI 
+# Wrapper OpenMPI # run with OpenMPI
+# Wrapper none
+
+#--------------------------------------------------------------------------------
+# 3. Define the experiments.
+#--------------------------------------------------------------------------------
+# Each experiment must be wrapped inside an Experiment*() function block. A single 
+# experiment runs one job for each element of the cross product of the following
+# parameters:
+#
+# - included algorithms
+# - values for k
+# - seeds
+# - number of threads (compute nodes, mpi ranks)
+# - graphs
+#
+# Note: there can be multiple Experiment*() blocks in this file.
+ExperimentLPvsFM() {
+    # Which algorithms should be included?
+    # Algorithms Standard T-Weight-d2-r0.5-l2
+    # Algorithms sf2.5-Standard sf2.5-T-Weight-d2-r0.5-l2 # kway-Standard kway-T-Weight-d2-r0.5-l2
+    # Algorithms Standard sf2.5-Standard sf2.5-T-Weight-d1-r0.5-l3 T-Weight-d1-r0.5-l3 
+    # Algorithms sf2.5-T-Weight-d1-r0.25-l3
+    Algorithms Standard sf2.5-Standard c3-Standard
+
+    Ks 16 #8  16 # partition into 2, 4 and 8 blocks
+    Seeds 1 # perform repetitions with seeds 1, 2 and 3
+    Threads 1x1x64 # run with 1, 2 and 4 threads
+    #       | | +-- number of threads
+    #       | +-- number of MPI processes
+    #       +-- number of compute nodes
+
+    # Abort experiment after one hour
+    # Timelimit 1:00:00 # (optional)
+
+    # Abort one run after 30 minutes 
+    # TimelimitPerInstance 30:00 # (optional)
+
+    # Partition all graphs contained in some directory
+    # Graphs /nfs/home/rosch/Benchmark/nkgen2
+
+    Graphs /nfs/work/graph_benchmark_sets/ufm_paper/combined
+
+    # Partition a specific graph
+    # Graph /path/to/graph/graphfile # note: filename *without* file extension
+
+    # Partition an in-memory graph generated by KaGen:
+    #
+    # KaGen rgg2d N=10 M=15                  # Random 2D geometric graph with 2^10 vertices and 2^15 edges
+    # KaGen rdg2d n=10                       # Random 2D delaunay graph with 10 vertices 
+    # KaGen grid2d p=0.5 n=10                # Random 2D grid graph with 10 vertices and 0.5 edge probability
+    # KaGen rhg gamma=3.0 N=10 M=15          # Random hyperbolic graph with 2^10 vertices and 2^15 edges
+    # KaGen rmat a=0.1 b=0.2 c=0.3 N=10 M=15 # Random R-MAT graph with 2^10 vertices, 2^15 edges and probabilities 0.1/0.2/0.3/0.4
+    #
+    # Note: KaGen support is only available for some of the predefined partitioners.
+    #
+    # Note: to perform weak scaling experiments, the variables provided to KaGen can be scaled 
+    # the following values, where $lN = log2($N) etc:
+    # - $N, $lN: number of compute nodes 
+    # - $M, $lM: number of MPI processes
+    # - $T, $lT: number of threads
+    # - $P, $lP: number of PEs = $N * $M * $T
+    #
+    # E.g., to generate a RGG2D graph with 2^26 vertices *per compute node* and 2^29 edges *per compute node*, use:
+    # KaGen rgg2d 'N=$((26+$lN))' 'M=$((29+$lN))'
+    #
+    # It is crucial to surround the variables with upticks ('), as otherwise Bash would attempt to evaluate the expression immediately.
+}
