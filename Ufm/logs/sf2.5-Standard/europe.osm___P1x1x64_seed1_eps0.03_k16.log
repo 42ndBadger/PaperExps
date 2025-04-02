@@ -1,0 +1,391 @@
+################################################################################
+#                _  __       __  __  _         ____                            #
+#               | |/ / __ _ |  \/  |(_) _ __  |  _ \  __ _  _ __               #
+#               | ' / / _` || |\/| || || '_ \ | |_) |/ _` || '__|              #
+#               | . \| (_| || |  | || || | | ||  __/| (_| || |                 #
+#               |_|\_\\__,_||_|  |_||_||_| |_||_|    \__,_||_|                 #
+#                                                                              #
+################################################################################
+Current commit hash:          99c62314d27845b3825829ec1e3e97256490627d
+Assertion level:              always+light
+Statistics:                   disabled
+Built on:                     liskov
+Data type sizes:
+  Nodes IDs: 4 bytes | Node weights: 4 bytes
+  Edges IDs: 4 bytes | Edge weights: 4 bytes
+############################################################## Input Summary ###
+Execution mode:               64
+Seed:                         1
+Graph:                        europe.osm [node ordering: deg-buckets] [edge ordering: natural]
+  Number of nodes:             50912018 (unweighted)
+  Number of edges:            108109320 (unweighted)
+Number of blocks:             16
+Maximum block weight:         3277462 (3182002 + 3% / 3%)
+---------------------------------------------------------- Graph Compression ---
+Enabled:                      no
+-------------------------------------------------------- Partitioning Scheme ---
+Partitioning mode:            deep
+  Deep initial part. mode:    async-parallel
+  Deep initial part. load:    1
+Subgraph memory:              Lazy
+----------------------------------------------------------------- Coarsening ---
+Contraction limit:            2000
+Coarsening algorithm:         clustering
+  Cluster weight limit:       epsilon-block-weight x 1
+  Shrink factor:              2.5
+  Max mem-free level:         1
+  Clustering algorithm:       lp
+    Number of iterations:     5
+    High degree threshold:    4294967295
+    Max degree:               4294967295
+    Tie breaking strategy:    uniform
+    Implementation:           two-phase
+      Relabel:                no
+    2-hop clustering:         match-threadwise, if |Vcoarse| > 0.500000 * |V|
+    Isolated nodes:           match-during-two-hop
+  Forced hierarchy levels:    <none> (leeway: U=10.000000, L=1.100000)
+Contraction algorithm:        unbuffered
+  Implementation:             two-phase
+------------------------------------------------------- Initial Partitioning ---
+Adaptive algorithm selection: yes
+----------------------------------------------------------------- Refinement ---
+Refinement algorithms:        [greedy-balancer -> lp]
+Label propagation:
+  Number of iterations:       5
+  Tie breaking strategy:      uniform
+  Implementation:             single-phase
+############################################################## Preprocessing ###
+Removed 0 isolated nodes
+  Remaining nodes:             50912018
+  Remaining total node weight: 50912018
+############################################################### Partitioning ###
+Input graph:
+ Number of nodes: 50912018 | Number of edges: 108109320
+ Maximum node weight: 1
+
+Coarsening -> Level 1 [max cluster weight: 95460]:
+ Total edge weight:   46697962
+ Number of nodes:     20335590 | Number of edges: 46034870
+ Maximum node weight: 18
+
+Coarsening -> Level 2 [max cluster weight: 95460]:
+ Total edge weight:   20961566
+ Number of nodes:     8115615 | Number of edges: 19809824
+ Maximum node weight: 95
+
+Coarsening -> Level 3 [max cluster weight: 95460]:
+ Total edge weight:   9528836
+ Number of nodes:     3196479 | Number of edges: 8413124
+ Maximum node weight: 249
+
+Coarsening -> Level 4 [max cluster weight: 95460]:
+ Total edge weight:   4376462
+ Number of nodes:     1248303 | Number of edges: 3563112
+ Maximum node weight: 998
+
+Coarsening -> Level 5 [max cluster weight: 95460]:
+ Total edge weight:   2036992
+ Number of nodes:     480837 | Number of edges: 1510606
+ Maximum node weight: 2272
+
+Coarsening -> Level 6 [max cluster weight: 95460]:
+ Total edge weight:   959020
+ Number of nodes:     180268 | Number of edges: 627012
+ Maximum node weight: 6069
+
+Coarsening -> Level 7 [max cluster weight: 95460]:
+ Total edge weight:   449522
+ Number of nodes:     62773 | Number of edges: 240648
+ Maximum node weight: 18523
+
+==> Coarsening terminated with less than 128000 nodes
+
+Initial partitioning:
+ Number of blocks: 16
+
+Uncoarsening -> Level 6
+ Number of nodes: 180268 | Number of edges: 627012
+  Running refinement on 16 blocks
+   1. Greedy Balancer
+   2. Label Propagation
+
+Uncoarsening -> Level 5
+ Number of nodes: 480837 | Number of edges: 1510606
+  Running refinement on 16 blocks
+   1. Greedy Balancer
+   2. Label Propagation
+
+Uncoarsening -> Level 4
+ Number of nodes: 1248303 | Number of edges: 3563112
+  Running refinement on 16 blocks
+   1. Greedy Balancer
+   2. Label Propagation
+
+Uncoarsening -> Level 3
+ Number of nodes: 3196479 | Number of edges: 8413124
+  Running refinement on 16 blocks
+   1. Greedy Balancer
+   2. Label Propagation
+
+Uncoarsening -> Level 2
+ Number of nodes: 8115615 | Number of edges: 19809824
+  Running refinement on 16 blocks
+   1. Greedy Balancer
+   2. Label Propagation
+
+Uncoarsening -> Level 1
+ Number of nodes: 20335590 | Number of edges: 46034870
+  Running refinement on 16 blocks
+   1. Greedy Balancer
+   2. Label Propagation
+
+Uncoarsening -> Level 0
+ Number of nodes: 50912018 | Number of edges: 108109320
+  Running refinement on 16 blocks
+   1. Greedy Balancer
+   2. Label Propagation
+############################################################# Result Summary ###
+RESULT cut=1321 imbalance=0.0229283 feasible=1 k=16
+TIME read_input_graph=1.221 partitioning=1.553 partitioning.rearrange_by_degree-buckets=0.080 partitioning.rearrange_by_degree-buckets.sort_nodes_by_integer_buckets=0.028 partitioning.rearrange_by_degree-buckets.rearrange_input_graph=0.042 partitioning.rearrange_by_degree-buckets.deallocation=0.002 partitioning.refinement=0.000 partitioning.refinement.allocation=0.000 partitioning.coarsening=1.112 partitioning.coarsening.level[0]=0.567 partitioning.coarsening.level[0].label_propagation=0.174 partitioning.coarsening.level[0].label_propagation.allocation=0.014 partitioning.coarsening.level[0].label_propagation.iteration[0]=0.133 partitioning.coarsening.level[0].label_propagation.iteration[0].first_phase=0.125 partitioning.coarsening.level[0].label_propagation.iteration[1]=0.006 partitioning.coarsening.level[0].label_propagation.iteration[1].first_phase=0.006 partitioning.coarsening.level[0].label_propagation.iteration[2]=0.000 partitioning.coarsening.level[0].label_propagation.iteration[2].first_phase=0.000 partitioning.coarsening.level[0].label_propagation.handle_isolated_nodes=0.000 partitioning.coarsening.level[0].label_propagation.handle_two-hop_nodes=0.000 partitioning.coarsening.level[0].label_propagation.free=0.009 partitioning.coarsening.level[0].contract_graph=0.390 partitioning.coarsening.level[0].contract_graph.allocation=0.003 partitioning.coarsening.level[0].contract_graph.preprocessing=0.077 partitioning.coarsening.level[0].contract_graph.deallocation=0.001 partitioning.coarsening.level[0].contract_graph.construct_coarse_graph=0.302 partitioning.coarsening.level[0].contract_graph.construct_coarse_graph.aggregate_coarse_edges=0.273 partitioning.coarsening.level[0].contract_graph.construct_coarse_graph.aggregate_coarse_edges.first_phase=0.255 partitioning.coarsening.level[0].contract_graph.construct_coarse_graph.aggregate_coarse_edges.second_phase=0.004 partitioning.coarsening.level[0].contract_graph.construct_coarse_graph.remap_coarse_edges_and_mapping=0.017 partitioning.coarsening.level[1]=0.269 partitioning.coarsening.level[1].label_propagation=0.090 partitioning.coarsening.level[1].label_propagation.allocation=0.010 partitioning.coarsening.level[1].label_propagation.iteration[0]=0.070 partitioning.coarsening.level[1].label_propagation.iteration[0].first_phase=0.067 partitioning.coarsening.level[1].label_propagation.iteration[1]=0.001 partitioning.coarsening.level[1].label_propagation.iteration[1].first_phase=0.001 partitioning.coarsening.level[1].label_propagation.iteration[2]=0.000 partitioning.coarsening.level[1].label_propagation.iteration[2].first_phase=0.000 partitioning.coarsening.level[1].label_propagation.handle_isolated_nodes=0.000 partitioning.coarsening.level[1].label_propagation.handle_two-hop_nodes=0.000 partitioning.coarsening.level[1].contract_graph=0.177 partitioning.coarsening.level[1].contract_graph.allocation=0.003 partitioning.coarsening.level[1].contract_graph.preprocessing=0.042 partitioning.coarsening.level[1].contract_graph.deallocation=0.000 partitioning.coarsening.level[1].contract_graph.construct_coarse_graph=0.127 partitioning.coarsening.level[1].contract_graph.construct_coarse_graph.aggregate_coarse_edges=0.115 partitioning.coarsening.level[1].contract_graph.construct_coarse_graph.aggregate_coarse_edges.first_phase=0.111 partitioning.coarsening.level[1].contract_graph.construct_coarse_graph.aggregate_coarse_edges.second_phase=0.003 partitioning.coarsening.level[1].contract_graph.construct_coarse_graph.remap_coarse_edges_and_mapping=0.008 partitioning.coarsening.level[2]=0.120 partitioning.coarsening.level[2].label_propagation=0.039 partitioning.coarsening.level[2].label_propagation.iteration[0]=0.034 partitioning.coarsening.level[2].label_propagation.iteration[0].first_phase=0.032 partitioning.coarsening.level[2].label_propagation.iteration[1]=0.000 partitioning.coarsening.level[2].label_propagation.iteration[1].first_phase=0.000 partitioning.coarsening.level[2].label_propagation.handle_isolated_nodes=0.000 partitioning.coarsening.level[2].label_propagation.handle_two-hop_nodes=0.000 partitioning.coarsening.level[2].contract_graph=0.080 partitioning.coarsening.level[2].contract_graph.allocation=0.002 partitioning.coarsening.level[2].contract_graph.preprocessing=0.023 partitioning.coarsening.level[2].contract_graph.deallocation=0.000 partitioning.coarsening.level[2].contract_graph.construct_coarse_graph=0.054 partitioning.coarsening.level[2].contract_graph.construct_coarse_graph.aggregate_coarse_edges=0.047 partitioning.coarsening.level[2].contract_graph.construct_coarse_graph.aggregate_coarse_edges.first_phase=0.042 partitioning.coarsening.level[2].contract_graph.construct_coarse_graph.aggregate_coarse_edges.second_phase=0.004 partitioning.coarsening.level[2].contract_graph.construct_coarse_graph.remap_coarse_edges_and_mapping=0.004 partitioning.coarsening.level[3]=0.074 partitioning.coarsening.level[3].label_propagation=0.021 partitioning.coarsening.level[3].label_propagation.iteration[0]=0.018 partitioning.coarsening.level[3].label_propagation.iteration[0].first_phase=0.017 partitioning.coarsening.level[3].label_propagation.iteration[1]=0.000 partitioning.coarsening.level[3].label_propagation.iteration[1].first_phase=0.000 partitioning.coarsening.level[3].label_propagation.handle_isolated_nodes=0.000 partitioning.coarsening.level[3].label_propagation.handle_two-hop_nodes=0.000 partitioning.coarsening.level[3].contract_graph=0.052 partitioning.coarsening.level[3].contract_graph.allocation=0.001 partitioning.coarsening.level[3].contract_graph.preprocessing=0.019 partitioning.coarsening.level[3].contract_graph.deallocation=0.000 partitioning.coarsening.level[3].contract_graph.construct_coarse_graph=0.030 partitioning.coarsening.level[3].contract_graph.construct_coarse_graph.aggregate_coarse_edges=0.026 partitioning.coarsening.level[3].contract_graph.construct_coarse_graph.aggregate_coarse_edges.first_phase=0.019 partitioning.coarsening.level[3].contract_graph.construct_coarse_graph.aggregate_coarse_edges.second_phase=0.006 partitioning.coarsening.level[3].contract_graph.construct_coarse_graph.remap_coarse_edges_and_mapping=0.002 partitioning.coarsening.level[4]=0.053 partitioning.coarsening.level[4].label_propagation=0.020 partitioning.coarsening.level[4].label_propagation.iteration[0]=0.014 partitioning.coarsening.level[4].label_propagation.iteration[0].first_phase=0.014 partitioning.coarsening.level[4].label_propagation.iteration[1]=0.000 partitioning.coarsening.level[4].label_propagation.iteration[1].first_phase=0.000 partitioning.coarsening.level[4].label_propagation.handle_isolated_nodes=0.000 partitioning.coarsening.level[4].label_propagation.handle_two-hop_nodes=0.000 partitioning.coarsening.level[4].contract_graph=0.031 partitioning.coarsening.level[4].contract_graph.allocation=0.001 partitioning.coarsening.level[4].contract_graph.preprocessing=0.019 partitioning.coarsening.level[4].contract_graph.deallocation=0.000 partitioning.coarsening.level[4].contract_graph.construct_coarse_graph=0.010 partitioning.coarsening.level[4].contract_graph.construct_coarse_graph.aggregate_coarse_edges=0.008 partitioning.coarsening.level[4].contract_graph.construct_coarse_graph.aggregate_coarse_edges.first_phase=0.008 partitioning.coarsening.level[4].contract_graph.construct_coarse_graph.aggregate_coarse_edges.second_phase=0.000 partitioning.coarsening.level[4].contract_graph.construct_coarse_graph.remap_coarse_edges_and_mapping=0.000 partitioning.coarsening.level[5]=0.016 partitioning.coarsening.level[5].label_propagation=0.006 partitioning.coarsening.level[5].label_propagation.iteration[0]=0.005 partitioning.coarsening.level[5].label_propagation.iteration[0].first_phase=0.005 partitioning.coarsening.level[5].label_propagation.iteration[1]=0.000 partitioning.coarsening.level[5].label_propagation.iteration[1].first_phase=0.000 partitioning.coarsening.level[5].label_propagation.handle_isolated_nodes=0.000 partitioning.coarsening.level[5].label_propagation.handle_two-hop_nodes=0.000 partitioning.coarsening.level[5].contract_graph=0.010 partitioning.coarsening.level[5].contract_graph.allocation=0.000 partitioning.coarsening.level[5].contract_graph.preprocessing=0.005 partitioning.coarsening.level[5].contract_graph.deallocation=0.000 partitioning.coarsening.level[5].contract_graph.construct_coarse_graph=0.004 partitioning.coarsening.level[5].contract_graph.construct_coarse_graph.aggregate_coarse_edges=0.004 partitioning.coarsening.level[5].contract_graph.construct_coarse_graph.aggregate_coarse_edges.first_phase=0.004 partitioning.coarsening.level[5].contract_graph.construct_coarse_graph.aggregate_coarse_edges.second_phase=0.000 partitioning.coarsening.level[5].contract_graph.construct_coarse_graph.remap_coarse_edges_and_mapping=0.000 partitioning.coarsening.level[6]=0.008 partitioning.coarsening.level[6].label_propagation=0.002 partitioning.coarsening.level[6].label_propagation.iteration[0]=0.002 partitioning.coarsening.level[6].label_propagation.iteration[0].first_phase=0.002 partitioning.coarsening.level[6].label_propagation.iteration[1]=0.000 partitioning.coarsening.level[6].label_propagation.iteration[1].first_phase=0.000 partitioning.coarsening.level[6].label_propagation.handle_isolated_nodes=0.000 partitioning.coarsening.level[6].label_propagation.handle_two-hop_nodes=0.000 partitioning.coarsening.level[6].contract_graph=0.005 partitioning.coarsening.level[6].contract_graph.allocation=0.000 partitioning.coarsening.level[6].contract_graph.preprocessing=0.002 partitioning.coarsening.level[6].contract_graph.deallocation=0.000 partitioning.coarsening.level[6].contract_graph.construct_coarse_graph=0.002 partitioning.coarsening.level[6].contract_graph.construct_coarse_graph.aggregate_coarse_edges=0.002 partitioning.coarsening.level[6].contract_graph.construct_coarse_graph.aggregate_coarse_edges.first_phase=0.002 partitioning.coarsening.level[6].contract_graph.construct_coarse_graph.aggregate_coarse_edges.second_phase=0.000 partitioning.coarsening.level[6].contract_graph.construct_coarse_graph.remap_coarse_edges_and_mapping=0.000 partitioning.coarsening.deallocation=0.001 partitioning.initial_partitioning_scheme=0.121 partitioning.uncoarsening=0.221 partitioning.uncoarsening.level[6]=0.006 partitioning.uncoarsening.level[6].allocation=0.000 partitioning.uncoarsening.level[6].project_partition=0.000 partitioning.uncoarsening.level[6].create_graph=0.000 partitioning.uncoarsening.level[6].refinement=0.006 partitioning.uncoarsening.level[6].refinement.greedy_balancer=0.000 partitioning.uncoarsening.level[6].refinement.label_propagation=0.006 partitioning.uncoarsening.level[6].refinement.label_propagation.allocation=0.004 partitioning.uncoarsening.level[6].refinement.label_propagation.iteration[0]=0.001 partitioning.uncoarsening.level[6].refinement.label_propagation.iteration[1]=0.000 partitioning.uncoarsening.level[6].refinement.label_propagation.iteration[2]=0.000 partitioning.uncoarsening.level[6].refinement.label_propagation.iteration[3]=0.000 partitioning.uncoarsening.level[6].refinement.label_propagation.iteration[4]=0.000 partitioning.uncoarsening.level[5]=0.003 partitioning.uncoarsening.level[5].allocation=0.000 partitioning.uncoarsening.level[5].project_partition=0.000 partitioning.uncoarsening.level[5].create_graph=0.000 partitioning.uncoarsening.level[5].refinement=0.002 partitioning.uncoarsening.level[5].refinement.greedy_balancer=0.000 partitioning.uncoarsening.level[5].refinement.label_propagation=0.002 partitioning.uncoarsening.level[5].refinement.label_propagation.iteration[0]=0.001 partitioning.uncoarsening.level[5].refinement.label_propagation.iteration[1]=0.000 partitioning.uncoarsening.level[5].refinement.label_propagation.iteration[2]=0.000 partitioning.uncoarsening.level[5].refinement.label_propagation.iteration[3]=0.000 partitioning.uncoarsening.level[5].refinement.label_propagation.iteration[4]=0.000 partitioning.uncoarsening.level[4]=0.007 partitioning.uncoarsening.level[4].allocation=0.000 partitioning.uncoarsening.level[4].project_partition=0.000 partitioning.uncoarsening.level[4].create_graph=0.000 partitioning.uncoarsening.level[4].refinement=0.006 partitioning.uncoarsening.level[4].refinement.greedy_balancer=0.000 partitioning.uncoarsening.level[4].refinement.label_propagation=0.006 partitioning.uncoarsening.level[4].refinement.label_propagation.iteration[0]=0.004 partitioning.uncoarsening.level[4].refinement.label_propagation.iteration[1]=0.000 partitioning.uncoarsening.level[4].refinement.label_propagation.iteration[2]=0.000 partitioning.uncoarsening.level[4].refinement.label_propagation.iteration[3]=0.000 partitioning.uncoarsening.level[4].refinement.label_propagation.iteration[4]=0.000 partitioning.uncoarsening.level[3]=0.014 partitioning.uncoarsening.level[3].allocation=0.003 partitioning.uncoarsening.level[3].project_partition=0.000 partitioning.uncoarsening.level[3].create_graph=0.000 partitioning.uncoarsening.level[3].refinement=0.009 partitioning.uncoarsening.level[3].refinement.greedy_balancer=0.000 partitioning.uncoarsening.level[3].refinement.label_propagation=0.009 partitioning.uncoarsening.level[3].refinement.label_propagation.iteration[0]=0.007 partitioning.uncoarsening.level[3].refinement.label_propagation.iteration[1]=0.000 partitioning.uncoarsening.level[3].refinement.label_propagation.iteration[2]=0.000 partitioning.uncoarsening.level[3].refinement.label_propagation.iteration[3]=0.000 partitioning.uncoarsening.level[3].refinement.label_propagation.iteration[4]=0.000 partitioning.uncoarsening.level[2]=0.025 partitioning.uncoarsening.level[2].allocation=0.003 partitioning.uncoarsening.level[2].project_partition=0.000 partitioning.uncoarsening.level[2].create_graph=0.000 partitioning.uncoarsening.level[2].refinement=0.020 partitioning.uncoarsening.level[2].refinement.greedy_balancer=0.000 partitioning.uncoarsening.level[2].refinement.label_propagation=0.020 partitioning.uncoarsening.level[2].refinement.label_propagation.iteration[0]=0.017 partitioning.uncoarsening.level[2].refinement.label_propagation.iteration[1]=0.000 partitioning.uncoarsening.level[2].refinement.label_propagation.iteration[2]=0.000 partitioning.uncoarsening.level[2].refinement.label_propagation.iteration[3]=0.000 partitioning.uncoarsening.level[1]=0.055 partitioning.uncoarsening.level[1].allocation=0.004 partitioning.uncoarsening.level[1].project_partition=0.002 partitioning.uncoarsening.level[1].create_graph=0.001 partitioning.uncoarsening.level[1].refinement=0.045 partitioning.uncoarsening.level[1].refinement.greedy_balancer=0.000 partitioning.uncoarsening.level[1].refinement.label_propagation=0.045 partitioning.uncoarsening.level[1].refinement.label_propagation.iteration[0]=0.038 partitioning.uncoarsening.level[1].refinement.label_propagation.iteration[1]=0.001 partitioning.uncoarsening.level[1].refinement.label_propagation.iteration[2]=0.001 partitioning.uncoarsening.level[1].refinement.label_propagation.iteration[3]=0.001 partitioning.uncoarsening.level[1].refinement.label_propagation.iteration[4]=0.001 partitioning.uncoarsening.level[0]=0.107 partitioning.uncoarsening.level[0].allocation=0.006 partitioning.uncoarsening.level[0].project_partition=0.005 partitioning.uncoarsening.level[0].create_graph=0.003 partitioning.uncoarsening.level[0].refinement=0.087 partitioning.uncoarsening.level[0].refinement.greedy_balancer=0.000 partitioning.uncoarsening.level[0].refinement.label_propagation=0.087 partitioning.uncoarsening.level[0].refinement.label_propagation.iteration[0]=0.074 partitioning.uncoarsening.level[0].refinement.label_propagation.iteration[1]=0.002 partitioning.uncoarsening.level[0].refinement.label_propagation.iteration[2]=0.002 partitioning.uncoarsening.level[0].refinement.label_propagation.iteration[3]=0.002 partitioning.uncoarsening.level[0].refinement.label_propagation.iteration[4]=0.002 partitioning.deallocation=0.001 partitioning.re-integrate_isolated_nodes=0.013 io=0.004 
+MEMORY disabled
+
+Global Timer: ................................... 2.808 s    
+|- Read input graph: ............................ 1.221 s    
+|- Partitioning: ................................ 1.553 s    
+|  |- Rearrange by degree-buckets: .............. 0.080 s    
+|  |  |- Sort nodes by integer buckets: ......... 0.028 s    
+|  |  |- Rearrange input graph: ................. 0.042 s    
+|  |  `- Deallocation: .......................... 0.002 s    
+|  |- Refinement: ............................... 0.000 s    
+|  |  `- Allocation: ............................ 0.000 s    
+|  |- Coarsening: ............................... 1.112 s    
+|  |  |- Level (0): ............................. 0.567 s    
+|  |  |  |- Label Propagation: .................. 0.174 s    
+|  |  |  |  |- Allocation: ...................... 0.014 s    
+|  |  |  |  |- Iteration (0): ................... 0.133 s    
+|  |  |  |  |  `- First phase: .................. 0.125 s    
+|  |  |  |  |- Iteration (1): ................... 0.006 s    
+|  |  |  |  |  `- First phase: .................. 0.006 s    
+|  |  |  |  |- Iteration (2): ................... 0.000 s    
+|  |  |  |  |  `- First phase: .................. 0.000 s    
+|  |  |  |  |- Handle isolated nodes: ........... 0.000 s    
+|  |  |  |  |- Handle two-hop nodes: ............ 0.000 s    
+|  |  |  |  `- Free: ............................ 0.009 s    
+|  |  |  `- Contract graph: ..................... 0.390 s    
+|  |  |     |- Allocation: ...................... 0.003 s (3)
+|  |  |     |- Preprocessing: ................... 0.077 s (3)
+|  |  |     |- Deallocation: .................... 0.001 s    
+|  |  |     `- Construct coarse graph: .......... 0.302 s    
+|  |  |        |- Aggregate coarse edges: ....... 0.273 s    
+|  |  |        |  |- First phase: ............... 0.255 s    
+|  |  |        |  `- Second phase: .............. 0.004 s    
+|  |  |        `- Remap coarse edges and mapping: 0.017 s    
+|  |  |- Level (1): ............................. 0.269 s    
+|  |  |  |- Label Propagation: .................. 0.090 s    
+|  |  |  |  |- Allocation: ...................... 0.010 s    
+|  |  |  |  |- Iteration (0): ................... 0.070 s    
+|  |  |  |  |  `- First phase: .................. 0.067 s    
+|  |  |  |  |- Iteration (1): ................... 0.001 s    
+|  |  |  |  |  `- First phase: .................. 0.001 s    
+|  |  |  |  |- Iteration (2): ................... 0.000 s    
+|  |  |  |  |  `- First phase: .................. 0.000 s    
+|  |  |  |  |- Handle isolated nodes: ........... 0.000 s    
+|  |  |  |  `- Handle two-hop nodes: ............ 0.000 s    
+|  |  |  `- Contract graph: ..................... 0.177 s    
+|  |  |     |- Allocation: ...................... 0.003 s (3)
+|  |  |     |- Preprocessing: ................... 0.042 s (3)
+|  |  |     |- Deallocation: .................... 0.000 s    
+|  |  |     `- Construct coarse graph: .......... 0.127 s    
+|  |  |        |- Aggregate coarse edges: ....... 0.115 s    
+|  |  |        |  |- First phase: ............... 0.111 s    
+|  |  |        |  `- Second phase: .............. 0.003 s    
+|  |  |        `- Remap coarse edges and mapping: 0.008 s    
+|  |  |- Level (2): ............................. 0.120 s    
+|  |  |  |- Label Propagation: .................. 0.039 s    
+|  |  |  |  |- Iteration (0): ................... 0.034 s    
+|  |  |  |  |  `- First phase: .................. 0.032 s    
+|  |  |  |  |- Iteration (1): ................... 0.000 s    
+|  |  |  |  |  `- First phase: .................. 0.000 s    
+|  |  |  |  |- Handle isolated nodes: ........... 0.000 s    
+|  |  |  |  `- Handle two-hop nodes: ............ 0.000 s    
+|  |  |  `- Contract graph: ..................... 0.080 s    
+|  |  |     |- Allocation: ...................... 0.002 s (3)
+|  |  |     |- Preprocessing: ................... 0.023 s (3)
+|  |  |     |- Deallocation: .................... 0.000 s    
+|  |  |     `- Construct coarse graph: .......... 0.054 s    
+|  |  |        |- Aggregate coarse edges: ....... 0.047 s    
+|  |  |        |  |- First phase: ............... 0.042 s    
+|  |  |        |  `- Second phase: .............. 0.004 s    
+|  |  |        `- Remap coarse edges and mapping: 0.004 s    
+|  |  |- Level (3): ............................. 0.074 s    
+|  |  |  |- Label Propagation: .................. 0.021 s    
+|  |  |  |  |- Iteration (0): ................... 0.018 s    
+|  |  |  |  |  `- First phase: .................. 0.017 s    
+|  |  |  |  |- Iteration (1): ................... 0.000 s    
+|  |  |  |  |  `- First phase: .................. 0.000 s    
+|  |  |  |  |- Handle isolated nodes: ........... 0.000 s    
+|  |  |  |  `- Handle two-hop nodes: ............ 0.000 s    
+|  |  |  `- Contract graph: ..................... 0.052 s    
+|  |  |     |- Allocation: ...................... 0.001 s (3)
+|  |  |     |- Preprocessing: ................... 0.019 s (3)
+|  |  |     |- Deallocation: .................... 0.000 s    
+|  |  |     `- Construct coarse graph: .......... 0.030 s    
+|  |  |        |- Aggregate coarse edges: ....... 0.026 s    
+|  |  |        |  |- First phase: ............... 0.019 s    
+|  |  |        |  `- Second phase: .............. 0.006 s    
+|  |  |        `- Remap coarse edges and mapping: 0.002 s    
+|  |  |- Level (4): ............................. 0.053 s    
+|  |  |  |- Label Propagation: .................. 0.020 s    
+|  |  |  |  |- Iteration (0): ................... 0.014 s    
+|  |  |  |  |  `- First phase: .................. 0.014 s    
+|  |  |  |  |- Iteration (1): ................... 0.000 s    
+|  |  |  |  |  `- First phase: .................. 0.000 s    
+|  |  |  |  |- Handle isolated nodes: ........... 0.000 s    
+|  |  |  |  `- Handle two-hop nodes: ............ 0.000 s    
+|  |  |  `- Contract graph: ..................... 0.031 s    
+|  |  |     |- Allocation: ...................... 0.001 s (3)
+|  |  |     |- Preprocessing: ................... 0.019 s (3)
+|  |  |     |- Deallocation: .................... 0.000 s    
+|  |  |     `- Construct coarse graph: .......... 0.010 s    
+|  |  |        |- Aggregate coarse edges: ....... 0.008 s    
+|  |  |        |  |- First phase: ............... 0.008 s    
+|  |  |        |  `- Second phase: .............. 0.000 s    
+|  |  |        `- Remap coarse edges and mapping: 0.000 s    
+|  |  |- Level (5): ............................. 0.016 s    
+|  |  |  |- Label Propagation: .................. 0.006 s    
+|  |  |  |  |- Iteration (0): ................... 0.005 s    
+|  |  |  |  |  `- First phase: .................. 0.005 s    
+|  |  |  |  |- Iteration (1): ................... 0.000 s    
+|  |  |  |  |  `- First phase: .................. 0.000 s    
+|  |  |  |  |- Handle isolated nodes: ........... 0.000 s    
+|  |  |  |  `- Handle two-hop nodes: ............ 0.000 s    
+|  |  |  `- Contract graph: ..................... 0.010 s    
+|  |  |     |- Allocation: ...................... 0.000 s (3)
+|  |  |     |- Preprocessing: ................... 0.005 s (3)
+|  |  |     |- Deallocation: .................... 0.000 s    
+|  |  |     `- Construct coarse graph: .......... 0.004 s    
+|  |  |        |- Aggregate coarse edges: ....... 0.004 s    
+|  |  |        |  |- First phase: ............... 0.004 s    
+|  |  |        |  `- Second phase: .............. 0.000 s    
+|  |  |        `- Remap coarse edges and mapping: 0.000 s    
+|  |  |- Level (6): ............................. 0.008 s    
+|  |  |  |- Label Propagation: .................. 0.002 s    
+|  |  |  |  |- Iteration (0): ................... 0.002 s    
+|  |  |  |  |  `- First phase: .................. 0.002 s    
+|  |  |  |  |- Iteration (1): ................... 0.000 s    
+|  |  |  |  |  `- First phase: .................. 0.000 s    
+|  |  |  |  |- Handle isolated nodes: ........... 0.000 s    
+|  |  |  |  `- Handle two-hop nodes: ............ 0.000 s    
+|  |  |  `- Contract graph: ..................... 0.005 s    
+|  |  |     |- Allocation: ...................... 0.000 s (3)
+|  |  |     |- Preprocessing: ................... 0.002 s (3)
+|  |  |     |- Deallocation: .................... 0.000 s    
+|  |  |     `- Construct coarse graph: .......... 0.002 s    
+|  |  |        |- Aggregate coarse edges: ....... 0.002 s    
+|  |  |        |  |- First phase: ............... 0.002 s    
+|  |  |        |  `- Second phase: .............. 0.000 s    
+|  |  |        `- Remap coarse edges and mapping: 0.000 s    
+|  |  `- Deallocation: .......................... 0.001 s    
+|  |- Initial partitioning scheme: .............. 0.121 s    
+|  |- Uncoarsening: ............................. 0.221 s    
+|  |  |- Level (6): ............................. 0.006 s    
+|  |  |  |- Allocation: ......................... 0.000 s    
+|  |  |  |- Project partition: .................. 0.000 s    
+|  |  |  |- Create graph: ....................... 0.000 s    
+|  |  |  `- Refinement: ......................... 0.006 s    
+|  |  |     |- Greedy Balancer: ................. 0.000 s    
+|  |  |     `- Label Propagation: ............... 0.006 s    
+|  |  |        |- Allocation: ................... 0.004 s    
+|  |  |        |- Iteration (0): ................ 0.001 s    
+|  |  |        |- Iteration (1): ................ 0.000 s    
+|  |  |        |- Iteration (2): ................ 0.000 s    
+|  |  |        |- Iteration (3): ................ 0.000 s    
+|  |  |        `- Iteration (4): ................ 0.000 s    
+|  |  |- Level (5): ............................. 0.003 s    
+|  |  |  |- Allocation: ......................... 0.000 s    
+|  |  |  |- Project partition: .................. 0.000 s    
+|  |  |  |- Create graph: ....................... 0.000 s    
+|  |  |  `- Refinement: ......................... 0.002 s    
+|  |  |     |- Greedy Balancer: ................. 0.000 s    
+|  |  |     `- Label Propagation: ............... 0.002 s    
+|  |  |        |- Iteration (0): ................ 0.001 s    
+|  |  |        |- Iteration (1): ................ 0.000 s    
+|  |  |        |- Iteration (2): ................ 0.000 s    
+|  |  |        |- Iteration (3): ................ 0.000 s    
+|  |  |        `- Iteration (4): ................ 0.000 s    
+|  |  |- Level (4): ............................. 0.007 s    
+|  |  |  |- Allocation: ......................... 0.000 s    
+|  |  |  |- Project partition: .................. 0.000 s    
+|  |  |  |- Create graph: ....................... 0.000 s    
+|  |  |  `- Refinement: ......................... 0.006 s    
+|  |  |     |- Greedy Balancer: ................. 0.000 s    
+|  |  |     `- Label Propagation: ............... 0.006 s    
+|  |  |        |- Iteration (0): ................ 0.004 s    
+|  |  |        |- Iteration (1): ................ 0.000 s    
+|  |  |        |- Iteration (2): ................ 0.000 s    
+|  |  |        |- Iteration (3): ................ 0.000 s    
+|  |  |        `- Iteration (4): ................ 0.000 s    
+|  |  |- Level (3): ............................. 0.014 s    
+|  |  |  |- Allocation: ......................... 0.003 s    
+|  |  |  |- Project partition: .................. 0.000 s    
+|  |  |  |- Create graph: ....................... 0.000 s    
+|  |  |  `- Refinement: ......................... 0.009 s    
+|  |  |     |- Greedy Balancer: ................. 0.000 s    
+|  |  |     `- Label Propagation: ............... 0.009 s    
+|  |  |        |- Iteration (0): ................ 0.007 s    
+|  |  |        |- Iteration (1): ................ 0.000 s    
+|  |  |        |- Iteration (2): ................ 0.000 s    
+|  |  |        |- Iteration (3): ................ 0.000 s    
+|  |  |        `- Iteration (4): ................ 0.000 s    
+|  |  |- Level (2): ............................. 0.025 s    
+|  |  |  |- Allocation: ......................... 0.003 s    
+|  |  |  |- Project partition: .................. 0.000 s    
+|  |  |  |- Create graph: ....................... 0.000 s    
+|  |  |  `- Refinement: ......................... 0.020 s    
+|  |  |     |- Greedy Balancer: ................. 0.000 s    
+|  |  |     `- Label Propagation: ............... 0.020 s    
+|  |  |        |- Iteration (0): ................ 0.017 s    
+|  |  |        |- Iteration (1): ................ 0.000 s    
+|  |  |        |- Iteration (2): ................ 0.000 s    
+|  |  |        `- Iteration (3): ................ 0.000 s    
+|  |  |- Level (1): ............................. 0.055 s    
+|  |  |  |- Allocation: ......................... 0.004 s    
+|  |  |  |- Project partition: .................. 0.002 s    
+|  |  |  |- Create graph: ....................... 0.001 s    
+|  |  |  `- Refinement: ......................... 0.045 s    
+|  |  |     |- Greedy Balancer: ................. 0.000 s    
+|  |  |     `- Label Propagation: ............... 0.045 s    
+|  |  |        |- Iteration (0): ................ 0.038 s    
+|  |  |        |- Iteration (1): ................ 0.001 s    
+|  |  |        |- Iteration (2): ................ 0.001 s    
+|  |  |        |- Iteration (3): ................ 0.001 s    
+|  |  |        `- Iteration (4): ................ 0.001 s    
+|  |  `- Level (0): ............................. 0.107 s    
+|  |     |- Allocation: ......................... 0.006 s    
+|  |     |- Project partition: .................. 0.005 s    
+|  |     |- Create graph: ....................... 0.003 s    
+|  |     `- Refinement: ......................... 0.087 s    
+|  |        |- Greedy Balancer: ................. 0.000 s    
+|  |        `- Label Propagation: ............... 0.087 s    
+|  |           |- Iteration (0): ................ 0.074 s    
+|  |           |- Iteration (1): ................ 0.002 s    
+|  |           |- Iteration (2): ................ 0.002 s    
+|  |           |- Iteration (3): ................ 0.002 s    
+|  |           `- Iteration (4): ................ 0.002 s    
+|  |- Deallocation: ............................. 0.001 s    
+|  `- Re-integrate isolated nodes: .............. 0.013 s    
+`- IO: .......................................... 0.004 s    
+
+Partition summary:
+  Number of blocks: 16
+  Edge cut:         1321
+  Imbalance:        0.0229283
+  Feasible:         yes
+
+Block weights:
+  w(0 ) = 3170267    w(1 ) = 3238661    w(2 ) = 3236475    w(3 ) = 3170268  
+  w(4 ) = 3103603    w(5 ) = 3196575    w(6 ) = 3248823    w(7 ) = 3195902  
+  w(8 ) = 3242907    w(9 ) = 3055732    w(10) = 3243111    w(11) = 3191340  
+  w(12) = 3093846    w(13) = 3254957    w(14) = 3014591    w(15) = 3254960  
+
+Maximum resident set size: 3149072 KiB

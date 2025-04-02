@@ -1,0 +1,124 @@
+################################################################################
+#                _  __       __  __  _         ____                            #
+#               | |/ / __ _ |  \/  |(_) _ __  |  _ \  __ _  _ __               #
+#               | ' / / _` || |\/| || || '_ \ | |_) |/ _` || '__|              #
+#               | . \| (_| || |  | || || | | ||  __/| (_| || |                 #
+#               |_|\_\\__,_||_|  |_||_||_| |_||_|    \__,_||_|                 #
+#                                                                              #
+################################################################################
+Current commit hash:          99c62314d27845b3825829ec1e3e97256490627d
+Assertion level:              always+light
+Statistics:                   disabled
+Built on:                     liskov
+Data type sizes:
+  Nodes IDs: 4 bytes | Node weights: 4 bytes
+  Edges IDs: 4 bytes | Edge weights: 4 bytes
+############################################################## Input Summary ###
+Execution mode:               64
+Seed:                         1
+Graph:                        rmat_n16_m24 [node ordering: deg-buckets] [edge ordering: natural]
+  Number of nodes:               65527 (unweighted)
+  Number of edges:            33554422 (unweighted)
+Number of blocks:             16
+Maximum block weight:         4218 (4096 + 3% / 3%)
+---------------------------------------------------------- Graph Compression ---
+Enabled:                      no
+-------------------------------------------------------- Partitioning Scheme ---
+Partitioning mode:            deep
+  Deep initial part. mode:    async-parallel
+  Deep initial part. load:    1
+Subgraph memory:              Lazy
+----------------------------------------------------------------- Coarsening ---
+Contraction limit:            2000
+Coarsening algorithm:         clustering
+  Cluster weight limit:       epsilon-block-weight x 1
+  Shrink factor:              1.79769e+308
+  Max mem-free level:         1
+  Clustering algorithm:       lp
+    Number of iterations:     5
+    High degree threshold:    4294967295
+    Max degree:               4294967295
+    Tie breaking strategy:    uniform
+    Implementation:           two-phase
+      Relabel:                no
+    2-hop clustering:         match-threadwise, if |Vcoarse| > 0.500000 * |V|
+    Isolated nodes:           match-during-two-hop
+  Forced hierarchy levels:    <none> (leeway: U=10.000000, L=1.100000)
+Contraction algorithm:        unbuffered
+  Implementation:             two-phase
+------------------------------------------------------- Initial Partitioning ---
+Adaptive algorithm selection: yes
+----------------------------------------------------------------- Refinement ---
+Refinement algorithms:        [greedy-balancer -> lp]
+Label propagation:
+  Number of iterations:       5
+  Tie breaking strategy:      uniform
+  Implementation:             single-phase
+############################################################## Preprocessing ###
+Removed 0 isolated nodes
+  Remaining nodes:             65527
+  Remaining total node weight: 65527
+############################################################### Partitioning ###
+Input graph:
+ Number of nodes: 65527 | Number of edges: 33554422
+ Maximum node weight: 1
+
+==> Coarsening terminated with less than 128000 nodes
+
+Initial partitioning:
+ Number of blocks: 16
+
+Toplevel:
+ Number of nodes: 65527 | Number of edges: 33554422
+  Running refinement on 16 blocks
+   1. Greedy Balancer
+   2. Label Propagation
+############################################################# Result Summary ###
+RESULT cut=13948417 imbalance=0.0297852 feasible=1 k=16
+TIME read_input_graph=1.631 partitioning=1.541 partitioning.rearrange_by_degree-buckets=0.027 partitioning.rearrange_by_degree-buckets.sort_nodes_by_integer_buckets=0.013 partitioning.rearrange_by_degree-buckets.rearrange_input_graph=0.012 partitioning.rearrange_by_degree-buckets.deallocation=0.000 partitioning.refinement=0.000 partitioning.refinement.allocation=0.000 partitioning.coarsening=0.000 partitioning.coarsening.deallocation=0.000 partitioning.initial_partitioning_scheme=1.453 partitioning.uncoarsening=0.058 partitioning.uncoarsening.refinement=0.058 partitioning.uncoarsening.refinement.greedy_balancer=0.011 partitioning.uncoarsening.refinement.greedy_balancer.allocation=0.000 partitioning.uncoarsening.refinement.greedy_balancer.initialize_balancer_pq=0.004 partitioning.uncoarsening.refinement.greedy_balancer.initialize_balancer_pq.thread-local=0.004 partitioning.uncoarsening.refinement.greedy_balancer.initialize_balancer_pq.merge_thread-local_pqs=0.000 partitioning.uncoarsening.refinement.greedy_balancer.main_loop=0.006 partitioning.uncoarsening.refinement.label_propagation=0.046 partitioning.uncoarsening.refinement.label_propagation.allocation=0.000 partitioning.uncoarsening.refinement.label_propagation.iteration[0]=0.020 partitioning.uncoarsening.refinement.label_propagation.iteration[1]=0.008 partitioning.uncoarsening.refinement.label_propagation.iteration[2]=0.006 partitioning.uncoarsening.refinement.label_propagation.iteration[3]=0.004 partitioning.uncoarsening.refinement.label_propagation.iteration[4]=0.004 partitioning.deallocation=0.002 partitioning.re-integrate_isolated_nodes=0.000 io=0.000 
+MEMORY disabled
+
+Global Timer: ........................... 3.175 s 
+|- Read input graph: .................... 1.631 s 
+|- Partitioning: ........................ 1.541 s 
+|  |- Rearrange by degree-buckets: ...... 0.027 s 
+|  |  |- Sort nodes by integer buckets: . 0.013 s 
+|  |  |- Rearrange input graph: ......... 0.012 s 
+|  |  `- Deallocation: .................. 0.000 s 
+|  |- Refinement: ....................... 0.000 s 
+|  |  `- Allocation: .................... 0.000 s 
+|  |- Coarsening: ....................... 0.000 s 
+|  |  `- Deallocation: .................. 0.000 s 
+|  |- Initial partitioning scheme: ...... 1.453 s 
+|  |- Uncoarsening: ..................... 0.058 s 
+|  |  `- Refinement: .................... 0.058 s 
+|  |     |- Greedy Balancer: ............ 0.011 s 
+|  |     |  |- Allocation: .............. 0.000 s 
+|  |     |  |- Initialize balancer PQ: .. 0.004 s 
+|  |     |  |  |- Thread-local: ......... 0.004 s 
+|  |     |  |  `- Merge thread-local PQs: 0.000 s 
+|  |     |  `- Main loop: ............... 0.006 s 
+|  |     `- Label Propagation: .......... 0.046 s 
+|  |        |- Allocation: .............. 0.000 s 
+|  |        |- Iteration (0): ........... 0.020 s 
+|  |        |- Iteration (1): ........... 0.008 s 
+|  |        |- Iteration (2): ........... 0.006 s 
+|  |        |- Iteration (3): ........... 0.004 s 
+|  |        `- Iteration (4): ........... 0.004 s 
+|  |- Deallocation: ..................... 0.002 s 
+|  `- Re-integrate isolated nodes: ...... 0.000 s 
+`- IO: .................................. 0.000 s 
+
+Partition summary:
+  Number of blocks: 16
+  Edge cut:         13948417
+  Imbalance:        0.0297852
+  Feasible:         yes
+
+Block weights:
+  w(0 ) = 4217    w(1 ) = 4218    w(2 ) = 4217    w(3 ) = 4218  
+  w(4 ) = 4217    w(5 ) = 2268    w(6 ) = 4218    w(7 ) = 4218  
+  w(8 ) = 4218    w(9 ) = 4218    w(10) = 4218    w(11) = 4218  
+  w(12) = 4217    w(13) = 4217    w(14) = 4217    w(15) = 4213  
+
+Maximum resident set size: 792896 KiB
